@@ -4,19 +4,21 @@ import datetime
 def main_bank():
     while True:
         print('\n 1. Deposito \n 2. Retiro \n 3. Extracto \n 0. para Salir \n')
-        option = int(input("Ingrese la operación que desea realizar: "))
-
-        if option == 0:
-            exit()
-        elif option == 1:
-            deposit()
-        elif option == 2:
-            withdraw()
-        elif option == 3:
-            print_statement()
+        option = input("Ingrese la operación que desea realizar: ")
+        if option.isdigit():
+            option = int(option)
+            if option == 0:
+                exit()
+            elif option == 1:
+                deposit()
+            elif option == 2:
+                withdraw()
+            elif option == 3:
+                print_statement()
+            else:
+                print('La opción que ha digitado es incorrecta, intentelo nuevamente ')
         else:
-            print('La opción que ha digitado es incorrecta, intentelo nuevamente ')
-
+            print('solo puedes ingresar opciones en numeros')
 
 
 transactions = []
@@ -37,7 +39,6 @@ def deposit():
                 date = datetime.datetime.now().strftime("%d/%m/%Y")
                 transacciones.append((date, monto))
                 print(f"Se ha depositado {monto} correctamente.")
-
 
 
 def withdraw():
