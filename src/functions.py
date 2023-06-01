@@ -25,16 +25,18 @@ transactions = []
 def deposit():
     while True:
         consult = input("Dijite S para realizar un deposito o digite N Para salir: ")
-        if consult.lower() == 'n':
+        if not consult.isalpha():
+            print("El valor ingresado no es correcto")
+        elif consult.lower() == 'n':
             break
         elif consult.lower() == 's':
-            cash = float(input("Ingrese monto a depositar: "))
-            if cash <= 0:
+            monto = float(input("Ingrese monto a depositar: "))
+            if monto <= 0:
                 print("El monto ingresado no es correcto")
             else:
                 date = datetime.datetime.now().strftime("%d/%m/%Y")
-                transactions.append((date, cash))
-                print(f"Se ha depositado {cash} correctamente.")
+                transacciones.append((date, monto))
+                print(f"Se ha depositado {monto} correctamente.")
 
 
 
