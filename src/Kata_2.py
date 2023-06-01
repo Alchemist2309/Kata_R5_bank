@@ -5,8 +5,10 @@ transacciones = []
 
 def deposit():
     while True:
-        consulta = input("¿Desea ingresar un depósito? (s/n): ")
-        if consulta.lower() == 'n':
+        consulta = input("¿Desea ingresar un depósito? (S/N): ")
+        if not consulta.isalpha():
+            print("El valor ingresado no es correcto")
+        elif consulta.lower() == 'n':
             break
         elif consulta.lower() == 's':
             monto = float(input("Ingrese monto a depositar: "))
@@ -23,6 +25,8 @@ def deposit():
 def withdraw():
     while True:
         consulta_retiro = input("¿Desea hacer un retiro? (s/n): ")
+        if not consulta_retiro.isalpha():
+            print("El valor ingresado no es correcto")
         if consulta_retiro.lower() == 'n':
             print_statement()
             break
